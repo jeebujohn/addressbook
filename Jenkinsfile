@@ -20,9 +20,13 @@ pipeline {
                     sh 'mvn test'
                 } 
             }
+            post{
+                always{
+                    junit 'target/surefire-reports/*.xml'
+                }    
+            }
 
             }
-            
             stage('Package') {
             steps {
                 script{
@@ -30,7 +34,7 @@ pipeline {
                     sh 'mvn package'
                 }
             }
-            
+
             }
     }
 }
