@@ -33,11 +33,13 @@ pipeline {
                 agent any
             steps {
                 script{
+                    sshagent(['ssh-key']) {
                     echo "PACKAGE THE CODE"
-                    sh 'mvn package'
+                    sh "ssh -o StrictHostKeyChecking-no 'bash mvn package'"
                 }
             }
 
             }
     }
 }
+} 
