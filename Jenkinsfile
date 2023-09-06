@@ -37,7 +37,7 @@ pipeline {
                 script{
                     sshagent(['ssh-key']) {
                     echo "PACKAGE THE CODE"
-                    sh "scp -o StrictHostKeyChecking-no server-script.sh ${BUILD_SERVER_IP}:/home/ec2-user
+                    sh "scp -o StrictHostKeyChecking-no server-script.sh ${BUILD_SERVER_IP}:/home/ec2-user"
                     sh "ssh -o StrictHostKeyChecking-no ${BUILD_SERVER_IP}:/home/ec2-user 'bash ~/server-script.sh'"           
                 }
             }
